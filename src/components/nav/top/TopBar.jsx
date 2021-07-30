@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import "./topBar.css";
 
 const TopBar = () => {
+  const isThereUser = false
+
   return (
     <>
       <div className="top">
@@ -23,19 +25,30 @@ const TopBar = () => {
         </div>
         <div className="topCenter">
           <ul className="topList">
-            <li className="topListItem"> Home </li>
-            <li className="topListItem"> About </li>
-            <li className="topListItem"> Contact </li>
-            <li className="topListItem"> Post </li>
-            <li className="topListItem"> Logout </li>
+            <li className="topListItem"> <Link to="/" className="link">Home</Link> </li>
+            <li className="topListItem"> <Link to="/about" className="link">About</Link>  </li>
+            <li className="topListItem"> <Link to="/contact" className="link">Contact</Link>   </li>
+            <li className="topListItem"> {isThereUser && <Link to="/write" className="link">Create Post</Link>}  </li>
+            <li className="topListItem"> {isThereUser && <Link to="/logout" className="link">Logout</Link> }  </li>
           </ul>
         </div>
         <div className="topRight">
-          <img
-            src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-            alt="profile image"
-            className="topImg"
-          />
+          {
+            isThereUser ? (
+              <img
+              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              alt="profile image"
+              className="topImg"
+            />
+
+            ) : (
+              <ul className="topList">
+                <li className="topListItem"> <Link to="/login" className="link">Login</Link> </li>
+                <li className="topListItem"> <Link to="/register" className="link">Register</Link>  </li>
+
+              </ul>
+            )
+          }
           <span className="topSearchIcon">
             <box-icon name="search"></box-icon>
           </span>
