@@ -1,23 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './post.css'
 
-const Pots = () => {
+const Pots = ({ title, image, category, date, description, _id }) => {
     return (
         <>
             <div className="post">
-                <img className="postImg" src="https://blog.ohhdeer.com/s/Allison-Wallpaper-November-Main-High-Res.jpg" alt="post img" className="postImg" />
+                <img className="postImg" src={image} alt="post img" className="postImg" />
                 <div className="postInfo">
                     <div className="postCats">
-                        <span className="postCat">Music</span>
-                        <span className="postCat">Life</span>
+                        {category.map((cat, index) => (
+                            <span className="postCat" key={index}>{cat}</span>
+                        ))}
+
                     </div>
-                    <span className="postTitle">
-                        Lorem ipsum dolor
-                    </span>
-                    <span className="postDate"> 1 hour ago</span>
-                    <p className="postDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Nemo iure totam fugit nihil cumque quam, 
-                    a quo quod eos perferendis aliquid perspiciatis deserunt corporis consequatur provident neque repellendus voluptas unde?</p>
+                    <Link to={`/post/${_id}`} className="link">
+                        <span className="postTitle">
+                            {title}
+                        </span>
+                    </Link>
+                    <span className="postDate"> {new Date(date).toDateString()}</span>
+                    <p className="postDesc"> {description}</p>
                 </div>
             </div>
         </>
