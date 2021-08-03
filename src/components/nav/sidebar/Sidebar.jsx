@@ -1,7 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import api from "../../../api/index";
 import "./sideBar.css";
 
 const Sidebar = () => {
+  const [categories, setCategories] = useState([]);
+  useEffect(async () => {
+    const response = await api.fetchCategories();
+    if (response) setCategories(response.categories);
+  }, []);
+
   return (
     <>
       <div className="sidebar">
@@ -21,11 +30,11 @@ const Sidebar = () => {
           <div className="sidebarItem">
             <div className="sidebarTitle">Categories</div>
             <ul className="sidebarList">
-              <li className="sidebarListItems">Life</li>
-              <li className="sidebarListItems">Music</li>
-              <li className="sidebarListItems">Style</li>
-              <li className="sidebarListItems">Sports</li>
-              <li className="sidebarListItems">Tech</li>
+              {categories.map((category, index) => (
+                <li className="sidebarListItems" key={index}>
+                  {category.name}
+                </li>
+              ))}
             </ul>
           </div>
 

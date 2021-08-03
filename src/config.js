@@ -17,7 +17,8 @@ const BASE_CATEGORY_URL = `${API_URL}${category}`;
 export {
   BASE_USER_URL,
   BASE_POST_URL,
+  BASE_CATEGORY_URL,
   API_URL,
-  API_KEY,
-  BASE_CATEGORY_URL
+  API_KEY
+  
 };
