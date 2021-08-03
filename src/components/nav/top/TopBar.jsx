@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Context } from "./../../../context/Context"
+import { useContext } from "react";
 import "./topBar.css";
 
 const TopBar = () => {
-  const isThereUser = false
+  const { user } = useContext(Context)
 
   return (
     <>
@@ -28,13 +30,13 @@ const TopBar = () => {
             <li className="topListItem"> <Link to="/" className="link">Home</Link> </li>
             <li className="topListItem"> <Link to="/about" className="link">About</Link>  </li>
             <li className="topListItem"> <Link to="/contact" className="link">Contact</Link>   </li>
-            <li className="topListItem"> {isThereUser && <Link to="/write" className="link">Create Post</Link>}  </li>
-            <li className="topListItem"> {isThereUser && <Link to="/logout" className="link">Logout</Link> }  </li>
+            <li className="topListItem"> {user && <Link to="/write" className="link">Create Post</Link>}  </li>
+            <li className="topListItem"> {user && <Link to="/logout" className="link">Logout</Link> }  </li>
           </ul>
         </div>
         <div className="topRight">
           {
-            isThereUser ? (
+            user ? (
               <img
               src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
               alt="profile image"

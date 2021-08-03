@@ -24,7 +24,7 @@ const Login = () => {
             const res = await api.authLogin( username.current.value,  password.current.value)
             if( res.login ){
                 dispatch( {type: "LOGIN_SUCCESS", payload: res.user})
-                history.push('/')
+                return history.push('/')
             }
             setError(true)
             dispatch( {type: "LOGIN_FAIL"})

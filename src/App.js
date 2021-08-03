@@ -5,6 +5,8 @@ import CreatePost from "./components/create/post/CreatePost";
 import Settings from "./components/settings/Settings";
 import Login from "./components/login/Login";
 import Register from "./components/register/register";
+import { Context } from "./context/Context"
+import { useContext } from "react";
 
 import {
   BrowserRouter as Router,
@@ -15,7 +17,7 @@ import {
 
 function App() {
 
-  const isThereUser = false
+  const { user } = useContext(Context)
 
   return (
     <div className="App">
@@ -29,16 +31,16 @@ function App() {
             </Route>
 
             <Route path="/login">
-              {isThereUser ? <Home /> : <Login />}
+              {user ? <Home /> : <Login />}
             </Route>
             <Route path="/register">
-              {isThereUser ? <Home /> : <Register />}
+              {user ? <Home /> : <Register />}
             </Route>
             <Route path="/write">
-              {isThereUser ? <CreatePost /> : <Login />}
+              {user ? <CreatePost /> : <Login />}
             </Route>
             <Route path="/settings">
-              {isThereUser ? <Settings /> : <Login />}
+              {user ? <Settings /> : <Login />}
             </Route>
 
             <Route path="/post/:postID">
