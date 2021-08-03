@@ -11,13 +11,13 @@ const LoginReducer = (state, action) => {
         case "LOGIN_SUCCESS":
             return {
                 user: action.payload,
-                isFetching: false, //for the progress bar
+                isFetching: false,
                 error: false
             };
         case "LOGIN_FAIL":
             return {
                 user: null,
-                isFetching: false, //for the progress bar
+                isFetching: false, 
                 error: true
             }
 

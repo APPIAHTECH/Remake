@@ -17,32 +17,37 @@ const defaultConfig = {
 
 const apiSettings = {
 
-    /*** USER DATA */
+  /*** USER DATA */
 
-    authRegister: async (data) => { 
-      const response =  await axios.post(`${BASE_USER_URL}/register`, data) 
-      return response.data
-    },
+  authRegister: async (data) => {
+    const response = await axios.post(`${BASE_USER_URL}/register`, data)
+    return response.data
+  },
+
+  authLogin: async (username, password) => {
+    const response = await axios.post(`${BASE_USER_URL}/login`, {username, password})
+    return response.data
+  },
 
   /*** CATEGORY DATA */
-  fetchCategories: async () => { 
-    const categories =  await axios.get(`${BASE_CATEGORY_URL}/`) 
+  fetchCategories: async () => {
+    const categories = await axios.get(`${BASE_CATEGORY_URL}/`)
     return categories.data
   },
 
   /*** POST DATA */
-  fetchPosts: async () => { 
-    const posts =  await axios.get(`${BASE_POST_URL}/`) 
+  fetchPosts: async () => {
+    const posts = await axios.get(`${BASE_POST_URL}/`)
     return posts.data
   },
 
-  fetchPostsBySearch: async (search) => { 
-    const posts =  await axios.get(`${BASE_POST_URL}${search}`) 
+  fetchPostsBySearch: async (search) => {
+    const posts = await axios.get(`${BASE_POST_URL}${search}`)
     return posts.data
   },
 
-  fetchPost: async (postID) => { 
-    const post =  await axios.get(`${BASE_POST_URL}/${postID}`) 
+  fetchPost: async (postID) => {
+    const post = await axios.get(`${BASE_POST_URL}/${postID}`)
     return post.data
   }
 };
