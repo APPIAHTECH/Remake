@@ -17,8 +17,14 @@ const defaultConfig = {
 
 const apiSettings = {
 
-  /*** CATEGORY DATA */
+    /*** USER DATA */
 
+    authRegister: async (data) => { 
+      const response =  await axios.post(`${BASE_USER_URL}/register`, data) 
+      return response.data
+    },
+
+  /*** CATEGORY DATA */
   fetchCategories: async () => { 
     const categories =  await axios.get(`${BASE_CATEGORY_URL}/`) 
     return categories.data
