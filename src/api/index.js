@@ -21,13 +21,17 @@ const apiSettings = {
 
   fetchCategories: async () => { 
     const categories =  await axios.get(`${BASE_CATEGORY_URL}/`) 
-    console.log(categories);
     return categories.data
   },
 
   /*** POST DATA */
   fetchPosts: async () => { 
     const posts =  await axios.get(`${BASE_POST_URL}/`) 
+    return posts.data
+  },
+
+  fetchPostsBySearch: async (search) => { 
+    const posts =  await axios.get(`${BASE_POST_URL}${search}`) 
     return posts.data
   },
 

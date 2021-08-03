@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useState, useEffect } from "react";
 import api from "./../../api/index"
 
@@ -35,7 +35,7 @@ const PostDetail = () => {
                 </h1>
 
                 <div className="postDetailInfo">
-                    <span className="postDetailAuthor"> Author: <b>{post.username}</b></span>
+                    <span className="postDetailAuthor"> Author: <Link to={`/?user=${post.username}`} className="link">  <b>{post.username}</b> </Link> </span>
                     <span className="postDetailPostDate">{ new Date(post.createdAt).toDateString() }</span>
                 </div>
                 <p className="postDetailDes"> {post.description}</p>

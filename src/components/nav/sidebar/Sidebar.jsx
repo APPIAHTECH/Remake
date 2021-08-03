@@ -31,9 +31,11 @@ const Sidebar = () => {
             <div className="sidebarTitle">Categories</div>
             <ul className="sidebarList">
               {categories.map((category, index) => (
-                <li className="sidebarListItems" key={index}>
-                  {category.name}
-                </li>
+                <Link to={`/?category=${category.name}`} className="link">
+                  <li className="sidebarListItems" key={index}>
+                    {category.name}
+                  </li>
+                </Link>
               ))}
             </ul>
           </div>
