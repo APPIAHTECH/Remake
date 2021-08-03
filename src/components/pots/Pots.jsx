@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './post.css'
 
 const Pots = ({ title, image, category, date, description, _id }) => {
+    
     return (
         <>
             <div className="post">

@@ -25,8 +25,13 @@ const apiSettings = {
   },
 
   authLogin: async (username, password) => {
-    const response = await axios.post(`${BASE_USER_URL}/login`, {username, password})
+    const response = await axios.post(`${BASE_USER_URL}/login`, { username, password })
     return response.data
+  },
+
+  upload: async (photo) => {
+    const uploaded = await axios.post(`${BASE_USER_URL}/upload`, photo)
+    return uploaded.data
   },
 
   /*** CATEGORY DATA */
@@ -49,6 +54,22 @@ const apiSettings = {
   fetchPost: async (postID) => {
     const post = await axios.get(`${BASE_POST_URL}/${postID}`)
     return post.data
+  },
+
+  createPost: async (post) => {
+    const createdPost = await axios.post(`${BASE_POST_URL}/create`, post)
+    return createdPost.data
+  },
+
+  deletePost: async (postID, username) => {
+    const postDeleted = await axios.delete(`${BASE_POST_URL}/${postID}`,  { data: { username }})
+    return postDeleted.data
+  },
+
+  updatePost: async (postID, newPost) => {
+    console.log(newPost);
+    const postUpdated = await axios.put(`${BASE_POST_URL}/${postID}`,  newPost)
+    return postUpdated.data
   }
 };
 

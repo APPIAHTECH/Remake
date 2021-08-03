@@ -5,8 +5,9 @@ import { useContext } from "react";
 import "./topBar.css";
 
 const TopBar = () => {
-  const { user } = useContext(Context)
-
+  const { user, dispatch, isFetching} = useContext(Context)
+  const handleLogout = ()=>  dispatch( {type: "LOGOUT"})
+  console.log(user);
   return (
     <>
       <div className="top">
@@ -31,14 +32,14 @@ const TopBar = () => {
             <li className="topListItem"> <Link to="/about" className="link">About</Link>  </li>
             <li className="topListItem"> <Link to="/contact" className="link">Contact</Link>   </li>
             <li className="topListItem"> {user && <Link to="/write" className="link">Create Post</Link>}  </li>
-            <li className="topListItem"> {user && <Link to="/logout" className="link">Logout</Link> }  </li>
+            <li className="topListItem"> {user && <Link to="/" className="link" onClick={handleLogout}>Logout</Link> }  </li>
           </ul>
         </div>
         <div className="topRight">
           {
             user ? (
               <img
-              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+              src={user.profilePicture}
               alt="profile image"
               className="topImg"
             />
