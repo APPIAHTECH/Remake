@@ -29,6 +29,17 @@ const apiSettings = {
     return response.data
   },
 
+  deleteUser: async (id, deletedUser) => {
+    const deleteUser = await axios.delete(`${BASE_USER_URL}/${id}`, { data: { deletedUser } } )
+    return deleteUser.data
+  },
+
+  updateUser: async (id, updatedUser) => {
+    const updated = await axios.put(`${BASE_USER_URL}/${id}`, updatedUser)
+    return updated.data
+  },
+
+
   upload: async (photo) => {
     const uploaded = await axios.post(`${BASE_USER_URL}/upload`, photo)
     return uploaded.data
@@ -62,13 +73,13 @@ const apiSettings = {
   },
 
   deletePost: async (postID, username) => {
-    const postDeleted = await axios.delete(`${BASE_POST_URL}/${postID}`,  { data: { username }})
+    const postDeleted = await axios.delete(`${BASE_POST_URL}/${postID}`, { data: { username } })
     return postDeleted.data
   },
 
   updatePost: async (postID, newPost) => {
     console.log(newPost);
-    const postUpdated = await axios.put(`${BASE_POST_URL}/${postID}`,  newPost)
+    const postUpdated = await axios.put(`${BASE_POST_URL}/${postID}`, newPost)
     return postUpdated.data
   }
 };

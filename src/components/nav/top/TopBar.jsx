@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Context } from "./../../../context/Context"
 import { useContext } from "react";
+import { BASE_IMAGES_URL } from "../../../config"
 import "./topBar.css";
 
 const TopBar = () => {
@@ -36,14 +37,16 @@ const TopBar = () => {
           </ul>
         </div>
         <div className="topRight">
+          
           {
             user ? (
+              <Link to="/settings">
               <img
-              src={user.profilePicture}
-              alt="profile image"
-              className="topImg"
-            />
-
+                src={`${BASE_IMAGES_URL}${user.profilePicture}`}
+                alt="profile image"
+                className="topImg"
+              />
+            </Link>
             ) : (
               <ul className="topList">
                 <li className="topListItem"> <Link to="/login" className="link">Login</Link> </li>
